@@ -1,0 +1,8 @@
+{
+  "name": "@teydeastudio/utils",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@wordpress/scripts": "^34.0.0"
+  }
+}

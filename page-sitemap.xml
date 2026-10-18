@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Questa sitemap è stata generata dinamicamente il 18 Ottobre 2026 alle 12:36 da All in One SEO v5.0.3 - il primo plugin SEO di WordPress. -->
+
+<?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
+<urlset
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+	<url>
+		<loc><![CDATA[/]]></loc>
+		<lastmod><![CDATA[2020-01-22T20:12:28+00:00]]></lastmod>
+		<changefreq><![CDATA[always]]></changefreq>
+		<priority><![CDATA[1]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2014/06/home.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2014/06/home-storia.jpg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/santa-pasqua/]]></loc>
+		<lastmod><![CDATA[2026-02-19T17:29:19+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2017/03/foto-articolo-pasqua-1.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2026/02/whatsapp-image-2026-02-19-at-18.22.54.jpeg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/san-valentino/]]></loc>
+		<lastmod><![CDATA[2026-01-21T11:39:16+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2023/01/san-valentino.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2026/01/whatsapp-image-2026-01-21-at-12.31.49.jpeg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/cenone-di-capodanno/]]></loc>
+		<lastmod><![CDATA[2025-11-27T18:30:00+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2019/11/aa.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2025/11/unnamed-1.jpg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/santo-natale/]]></loc>
+		<lastmod><![CDATA[2025-10-23T10:55:20+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2016/02/5.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2025/10/unnamed-1.jpg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/cena-di-risotti/]]></loc>
+		<lastmod><![CDATA[2025-10-23T10:41:15+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/head-convegni.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2016/04/antipasti.jpeg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2016/04/primi.jpeg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2016/04/secondi.jpeg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2016/04/carni.jpeg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/convention-e-meeting/]]></loc>
+		<lastmod><![CDATA[2023-03-14T16:53:25+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/head-convegni.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/meeting-1.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/meeting-2.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/photo-2023-03-14-13-40-09.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/photo-2023-03-14-13-40-03.jpg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/locale/]]></loc>
+		<lastmod><![CDATA[2023-03-14T16:50:55+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/photo-2023-03-14-13-40-01-2.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/photo-2023-03-14-13-39-58.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/ambiente-4.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2014/06/ambiente-8.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/img_0492.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/img_0689.jpg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/cenone-di-san-silvestro-2021/]]></loc>
+		<lastmod><![CDATA[2022-11-18T19:57:53+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2021/11/aa.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2021/11/ss.jpeg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/l-1242017/]]></loc>
+		<lastmod><![CDATA[2022-07-07T15:31:40+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[/crediti-dimposta/]]></loc>
+		<lastmod><![CDATA[2022-07-07T15:29:43+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[/contributi-erogati/]]></loc>
+		<lastmod><![CDATA[2022-07-07T15:28:29+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[/matrimoni/]]></loc>
+		<lastmod><![CDATA[2022-06-01T19:06:25+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2014/06/home-ambiente.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2016/08/img_0674.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2016/08/img-20160716-wa0016.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2016/08/img_0289.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2022/06/img_3848.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/1478975_10202505081059153_1077032819_o1.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/1481031_10202505086099279_304140356_o1.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/1479224_10202505082899199_619167132_o.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/10/750-t283-85.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/img_20180616_151420.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2022/06/img_20180703_143357.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/img_20180616_151339.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/img_20180616_151500.jpg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/cucina/]]></loc>
+		<lastmod><![CDATA[2016-08-20T12:12:03+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/cucina-2.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/cucina-1.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/10/img_9160.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/cucina-3.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/10/img_9603.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/10/img_9369.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/10/img_9332.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/10/img_9494.jpg]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/contatti/]]></loc>
+		<lastmod><![CDATA[2015-07-24T13:59:21+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2014/05/head-contatti.jpg]]>			</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/wpcf7_captcha/1358867264.png]]>			</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[/cookie/]]></loc>
+		<lastmod><![CDATA[2015-07-24T13:51:03+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[/privacy/]]></loc>
+		<lastmod><![CDATA[2015-07-24T13:48:43+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[/contatti/mappa/]]></loc>
+		<lastmod><![CDATA[2015-07-24T13:15:52+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[/storia-del-castello/]]></loc>
+		<lastmod><![CDATA[2015-07-24T12:06:23+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+		<image:image>
+			<image:loc>
+				<![CDATA[/svzz-content/uploads/2015/07/head-storia.jpg]]>			</image:loc>
+		</image:image>
+	</url>
+</urlset>
