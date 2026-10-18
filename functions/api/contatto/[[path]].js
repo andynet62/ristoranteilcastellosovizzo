@@ -402,7 +402,7 @@ export async function onRequest(context) {
     const result = await db.prepare(`INSERT INTO "${TABLE_NAME}"
       (submission_id, received_at, site_label, site_url, form_plugin, form_id, form_title, page_url, fields_json, uploaded_files_json, status)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new') ON CONFLICT(submission_id) DO NOTHING`)
-      .bind(submissionId, receivedAt, "sito1", endpointOrigin, "contact-form-7-static", formId, formTitle, pageUrl, JSON.stringify(fields), JSON.stringify({}))
+      .bind(submissionId, receivedAt, "default", endpointOrigin, "contact-form-7-static", formId, formTitle, pageUrl, JSON.stringify(fields), JSON.stringify({}))
       .run();
       
     const changes = result && result.meta ? Number(result.meta.changes || 0) : 0;
