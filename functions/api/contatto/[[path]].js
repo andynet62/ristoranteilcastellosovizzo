@@ -26,6 +26,11 @@ function safeString(value, max = 2000) {
   return typeof value === "string" ? value.slice(0, max) : "";
 }
 
+// ==========================================
+// 1. GESTIONE RICHIESTE DAL BROWSER (POST / GET / OPTIONS)
+// (Il codice attuale che riceve i contatti e li salva come 'new')
+// ==========================================
+
 export async function onRequest(context) {
   const { request, env, params } = context;
   const method = request.method;
@@ -409,5 +414,99 @@ export async function onRequest(context) {
     return json({ ok: true, saved: changes > 0, duplicate: changes === 0 });
   } catch (error) {
     return json({ ok: false, error: "Database write failed" }, 500);
+  }
+}
+
+
+// ==========================================
+// 2. CRON TRIGGER: RIEPILOGO GIORNALIERO AUTOMATICO
+// (Gira sul server senza bisogno di browser)
+// ==========================================
+export async function scheduled(event, env, ctx) {
+  const db = env[DB_BINDING];
+  const qboxToken = env["QBOXMAIL_TOKEN"];       // Token Qboxmail salvato nelle variabili d'ambiente
+  const ownerEmail = env["NOTIFICATION_EMAIL"];  // Email del proprietario salvata nella dashboard
+
+  if (!db || !qboxToken || !ownerEmail) {
+    console.error("Configurazione mancante per il task schedulato.");
+    return;
+  }
+
+  try {
+    // 1. Estrae tutti i contatti non ancora inviati (status 'new')
+    const { results } = await db.prepare(`
+      SELECT * FROM "${TABLE_NAME}" 
+      WHERE status = 'new' 
+      ORDER BY received_at ASC
+    `).all();
+
+    if (!results || results.length === 0) {
+      console.log("Nessun nuovo contatto da riepilogare.");
+      return;
+    }
+
+    // 2. Compila il corpo dell'email cumulativa riutilizzando i campi salvati
+    let digestBody = `Buongiorno,\n\nEcco il riepilogo delle nuove richieste di contatto ricevute (${results.length}):\n\n`;
+    const submissionIds = [];
+
+    for (const row of results) {
+      submissionIds.push(row.submission_id);
+      let fields = {};
+      try {
+        fields = JSON.parse(row.fields_json);
+      } catch (e) {
+        fields = { raw: row.fields_json };
+      }
+
+      digestBody += `--------------------------------------------------\n`;
+      digestBody += `Data/Ora: ${row.received_at}\n`;
+      digestBody += `Pagina: ${row.page_url}\n`;
+      digestBody += `Dati inviati:\n`;
+      
+      for (const [key, val] of Object.entries(fields)) {
+        const valStr = typeof val === 'object' ? JSON.stringify(val) : val;
+        digestBody += `  • ${key}: ${valStr}\n`;
+      }
+      digestBody += `\n`;
+    }
+
+    digestBody += `--------------------------------------------------\n`;
+
+    // 3. Invio tramite Qboxmail Send API
+    const emailPayload = {
+      from: "noreply@xolosa.ee",
+      to: ownerEmail,
+      subject: `Riepilogo Contatti: ${results.length} nuove richieste`,
+      text: digestBody
+    };
+
+    const qboxResponse = await fetch("https://api.qboxmail.com/v1/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${qboxToken}`
+      },
+      body: JSON.stringify(emailPayload)
+    });
+
+    if (!qboxResponse.ok) {
+      console.error("Errore invio email Qboxmail (Cron):", await qboxResponse.text());
+      return;
+    }
+
+    // 4. Aggiorna lo stato dei record a 'sent' e imposta processed_at
+    const processedAt = new Date().toISOString();
+    for (const subId of submissionIds) {
+      await db.prepare(`
+        UPDATE "${TABLE_NAME}"
+        SET status = 'sent', processed_at = ?
+        WHERE submission_id = ?
+      `).bind(processedAt, subId).run();
+    }
+
+    console.log(`Riepilogo giornaliero inviato con successo per ${results.length} contatti.`);
+
+  } catch (err) {
+    console.error("Errore nel task schedulato:", err);
   }
 }

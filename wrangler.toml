@@ -1,0 +1,2 @@
+[triggers]
+crons = ["0 8 * * *"] # Esegue la funzione scheduled() ogni giorno alle 08:00 UTC
