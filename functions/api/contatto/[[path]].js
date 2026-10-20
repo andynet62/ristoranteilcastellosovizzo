@@ -1,7 +1,10 @@
-/** Cloudflare Pages Function: /api/contatto/[[path]].js
+/** 
+ * 
+ * Cloudflare Pages Function: /api/contatto/[[path]].js
  * Gestisce sia il loader JS dinamico per il frontend WordPress sia la ricezione POST con Turnstile e D1.
- */
-const DB_BINDING = "DB";
+ * 
+*/
+const DB_BINDING = "DB_CONTATTI";
 const TURNSTILE_SECRET_BINDING = "TURNSTILE_SECRET";
 const TURNSTILE_SITE_KEY_BINDING = "TURNSTILE_SITE_KEY"; // <-- NUOVO BINDING PUBBLICO
 const SERVER_SECRET_BINDING = "SNA_SHARED_SECRET";
@@ -25,11 +28,6 @@ function json(data, status = 200) {
 function safeString(value, max = 2000) {
   return typeof value === "string" ? value.slice(0, max) : "";
 }
-
-// ==========================================
-// 1. GESTIONE RICHIESTE DAL BROWSER (POST / GET / OPTIONS)
-// (Il codice attuale che riceve i contatti e li salva come 'new')
-// ==========================================
 
 export async function onRequest(context) {
   const { request, env, params } = context;
@@ -383,6 +381,7 @@ export async function onRequest(context) {
   const receivedAt = new Date().toISOString();
   const formId = safeString(payload.form_id, 100);
   const formTitle = safeString(payload.form_title, 300);
+  const notificationEmail = safeString(env.NOTIFICATION_EMAIL || "", 255);
 
   try {
     await db.prepare(`CREATE TABLE IF NOT EXISTS "${TABLE_NAME}" (
@@ -391,6 +390,7 @@ export async function onRequest(context) {
       received_at TEXT NOT NULL,
       site_label TEXT,
       site_url TEXT,
+      notification_email TEXT,
       form_plugin TEXT,
       form_id TEXT,
       form_title TEXT,
@@ -405,108 +405,14 @@ export async function onRequest(context) {
     await db.prepare(`CREATE INDEX IF NOT EXISTS "idx_${TABLE_NAME}_status_received" ON "${TABLE_NAME}" (status, received_at)`).run();
     
     const result = await db.prepare(`INSERT INTO "${TABLE_NAME}"
-      (submission_id, received_at, site_label, site_url, form_plugin, form_id, form_title, page_url, fields_json, uploaded_files_json, status)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new') ON CONFLICT(submission_id) DO NOTHING`)
-      .bind(submissionId, receivedAt, "default", endpointOrigin, "contact-form-7-static", formId, formTitle, pageUrl, JSON.stringify(fields), JSON.stringify({}))
+      (submission_id, received_at, site_label, site_url, notification_email, form_plugin, form_id, form_title, page_url, fields_json, uploaded_files_json, status)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new') ON CONFLICT(submission_id) DO NOTHING`)
+      .bind(submissionId, receivedAt, "default", endpointOrigin, notificationEmail, "contact-form-7-static", formId, formTitle, pageUrl, JSON.stringify(fields), JSON.stringify({}))
       .run();
       
     const changes = result && result.meta ? Number(result.meta.changes || 0) : 0;
     return json({ ok: true, saved: changes > 0, duplicate: changes === 0 });
   } catch (error) {
     return json({ ok: false, error: "Database write failed" }, 500);
-  }
-}
-
-
-// ==========================================
-// 2. CRON TRIGGER: RIEPILOGO GIORNALIERO AUTOMATICO
-// (Gira sul server senza bisogno di browser)
-// ==========================================
-export async function scheduled(event, env, ctx) {
-  const db = env[DB_BINDING];
-  const qboxToken = env["QBOXMAIL_TOKEN"];       // Token Qboxmail salvato nelle variabili d'ambiente
-  const ownerEmail = env["NOTIFICATION_EMAIL"];  // Email del proprietario salvata nella dashboard
-
-  if (!db || !qboxToken || !ownerEmail) {
-    console.error("Configurazione mancante per il task schedulato.");
-    return;
-  }
-
-  try {
-    // 1. Estrae tutti i contatti non ancora inviati (status 'new')
-    const { results } = await db.prepare(`
-      SELECT * FROM "${TABLE_NAME}" 
-      WHERE status = 'new' 
-      ORDER BY received_at ASC
-    `).all();
-
-    if (!results || results.length === 0) {
-      console.log("Nessun nuovo contatto da riepilogare.");
-      return;
-    }
-
-    // 2. Compila il corpo dell'email cumulativa riutilizzando i campi salvati
-    let digestBody = `Buongiorno,\n\nEcco il riepilogo delle nuove richieste di contatto ricevute (${results.length}):\n\n`;
-    const submissionIds = [];
-
-    for (const row of results) {
-      submissionIds.push(row.submission_id);
-      let fields = {};
-      try {
-        fields = JSON.parse(row.fields_json);
-      } catch (e) {
-        fields = { raw: row.fields_json };
-      }
-
-      digestBody += `--------------------------------------------------\n`;
-      digestBody += `Data/Ora: ${row.received_at}\n`;
-      digestBody += `Pagina: ${row.page_url}\n`;
-      digestBody += `Dati inviati:\n`;
-      
-      for (const [key, val] of Object.entries(fields)) {
-        const valStr = typeof val === 'object' ? JSON.stringify(val) : val;
-        digestBody += `  • ${key}: ${valStr}\n`;
-      }
-      digestBody += `\n`;
-    }
-
-    digestBody += `--------------------------------------------------\n`;
-
-    // 3. Invio tramite Qboxmail Send API
-    const emailPayload = {
-      from: "noreply@xolosa.ee",
-      to: ownerEmail,
-      subject: `Riepilogo Contatti: ${results.length} nuove richieste`,
-      text: digestBody
-    };
-
-    const qboxResponse = await fetch("https://api.qboxmail.com/v1/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${qboxToken}`
-      },
-      body: JSON.stringify(emailPayload)
-    });
-
-    if (!qboxResponse.ok) {
-      console.error("Errore invio email Qboxmail (Cron):", await qboxResponse.text());
-      return;
-    }
-
-    // 4. Aggiorna lo stato dei record a 'sent' e imposta processed_at
-    const processedAt = new Date().toISOString();
-    for (const subId of submissionIds) {
-      await db.prepare(`
-        UPDATE "${TABLE_NAME}"
-        SET status = 'sent', processed_at = ?
-        WHERE submission_id = ?
-      `).bind(processedAt, subId).run();
-    }
-
-    console.log(`Riepilogo giornaliero inviato con successo per ${results.length} contatti.`);
-
-  } catch (err) {
-    console.error("Errore nel task schedulato:", err);
   }
 }
